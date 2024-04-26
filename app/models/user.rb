@@ -6,6 +6,8 @@ class User < ApplicationRecord
          
          
   has_many :books, dependent: :destroy
+  
+  validates :na, presence: true
          
   has_one_attached :profile_image
   
