@@ -46,7 +46,12 @@
         </li>
       <% end %>
     </header>
-    <%= yield %>
+    <main>
+      <% flash.each do |type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{type == 'notice' ? 'success' : 'danger'}" %>
+      <% end %>
+      <%= yield %>
+    </main>
     <footer>
       <p>CopyRight Infratop.inc</p>
     </footer>
