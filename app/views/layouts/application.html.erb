@@ -24,56 +24,67 @@
           <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-              <li class="nav-item py-8">
-                <%= link_to(user_path(current_user.id), class="nav-link text-light") do %>
+              
+              <li class="nav-item  nav-link text-light　py-8">
+                <%= link_to user_path(current_user.id) do %>
                   <i class="fa-solid fa-house"></i><span>Home</span>
-                <% end %>
+                <% end %>　　　
               </li>
-              <li class="nav-item py-8">
-                <%= link_to(users_path, class="nav-link text-light") do %>
+              
+              <li class="nav-item nav-link text-light　py-8">
+                <%= link_to　users_path do %>
                   <i class="fa-solid fa-users"></i><span>Users</span>
                 <% end %>
               </li>
-              <li class="nav-item py-8">
-                <%= link_to(books_path, class="nav-link text-light") do %>
+              
+              <li class="nav-item nav-link text-light　py-8">
+                <%= link_to　books_path do %>
                   <i class="fa-solid fa-book-open"></i><span>Books</span>
                 <% end %>
               </li>
-              <li class="nav-item py-8">
-                <%= link_to(destroy_user_session_path, method: :delete, class="nav-link text-light") do %>
+              
+              <li class="nav-item nav-link text-light　py-8">
+                <%= link_to destroy_user_session_path, method: :delete do %>
                   <i class="fa-solid fa-sign-out-alt"></i><span>Log out</span>
                 <% end %>
               </li>
+              
               <% else %>
-              <li class="nav-item py-8">
-                <%= link_to(user_path(current_user.id), class="nav-link text-light") do %>
+              
+              <li class="nav-item nav-link text-light py-8">
+                <%= link_to user_path(current_user.id) do %>
                   <i class="fa-solid fa-house"></i><span>Home</span>
                 <% end %>
               </li>
-              <li class="nav-item py-8">
-                <%= link_to(about_path, class="nav-link text-light") do %>
+              
+              <li class="nav-item nav-link text-light py-8">
+                <%= link_to about_path do %>
                   <i class="fa-solid fa-link"></i><span>About</span>
                 <% end %>
               </li>
-              <li class="nav-item py-8">
-                <%= link_to(new_user_registration_path, class="nav-link text-light") do %>
+              
+              <li class="nav-item nav-link text-light py-8">
+                <%= link_to new_user_registration_path do %>
                   <i class="fa-solid fa-user-plus"></i><span>Sign up</span>
                 <% end %>
               </li>
-              <li class="nav-item py-8">
-                <%= link_to(new_user_session_path, class="nav-link text-light") do %>
+              
+              <li class="nav-item nav-link text-light py-8">
+                <%= link_to new_user_session_path do %>
                   <i class="fa-solid fa-sign-in-alt"></i><span>Log in</span>
                 <% end %>
               </li>
+              
               <% end %>
             </ul>
+            
           </div>
         </div>
       </nav>
     </header>
     <main>
       <% flash.each do |type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{type == 'notice' ? 'success' : 'danger'}" %>
+        <%= content_tag(:div, message, class: "alert alert-#{type == 'notice' ? 'success' : 'danger'}") %>
       <% end %>
       <%= yield %>
     </main>
