@@ -7,30 +7,31 @@
   </ul>
 <% end %>
 
-<div class="container">
+<div class="container mt-3">
   <div class="row">
-    <div class="col-md-3">
       <%= render partial: 'list', locals: { user: @user, book: @book } %>
     </div>
 
-    <div class="col-md-8 offset-1">
-      <h1>Book detail</h1>
-
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
       <table class="table">
         <% if @books.user == current_user %>
           <tbody>
             <tr>
-              <td><%= image_tag @books.user.get_profile_image(100,100) %></td>
-              <td><%= @books.user.name %></td>
-              <td><%= @books.title %></td>
+              <td><%= image_tag @books.user.get_profile_image(100,100) %></br><%= @books.user.name %></td>
+              <td><%= link_to book_path(@books.id) do %><%= @books.title %><% end %></td>
               <td><%= @books.body %></td>
-              <td><%= link_to "Edit", edit_book_path(@books) %></td>
-              <td><%= link_to "Destroy", book_path(@books), method: :delete %></td>
+              <td><%= link_to "Edit", edit_book_path(@books), class:"btn btn-sm btn-success" %></td>
+              <td><%= link_to "Destroy", book_path(@books), method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "本当に消しますか？"} %></td>
             </tr>
           </tbody>
         <% else %>
           <tbody>
-            <tr><td><%= image_tag @books.user.get_profile_image(100,100) %><%= @books.user.name %></td><td><%= @books.title %></td><td><%= @books.body %></td></tr>
+            <tr>
+              <td><%= image_tag @books.user.get_profile_image(100,100) %></br><%= @books.user.name %></td>
+              <td><%= link_to book_path(@books.id) do %><%= @books.title %><% end %></td>
+              <td><%= @books.body %></td>
+            </tr>
           </tbody>
         <% end %>
       </table>
