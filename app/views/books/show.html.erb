@@ -18,7 +18,7 @@
         <% if @books.user == current_user %>
           <tbody>
             <tr>
-              <td><%= image_tag @books.user.get_profile_image(100,100) %></br><%= @books.user.name %></td>
+              <td><%= image_tag @books.user.get_profile_image(100,100) %></br><%= link_to @books.user.name, user_path(@books.user_id) %></td>
               <td><%= link_to book_path(@books.id) do %><%= @books.title %><% end %></td>
               <td><%= @books.body %></td>
               <td><%= link_to "Edit", edit_book_path(@books), class:"btn btn-sm btn-success" %></td>
@@ -28,7 +28,7 @@
         <% else %>
           <tbody>
             <tr>
-              <td><%= image_tag @books.user.get_profile_image(100,100) %></br><%= @books.user.name %></td>
+              <td><%= image_tag @books.user.get_profile_image(100,100) %></br><%= link_to @books.user.name, user_path(@books.user_id) %></td>
               <td><%= link_to book_path(@books.id) do %><%= @books.title %><% end %></td>
               <td><%= @books.body %></td>
             </tr>
